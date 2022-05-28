@@ -212,7 +212,7 @@ b{
 	display: inherit;
 }
 .main-header .navbar.blue-bg {
-	background: #5867dd;
+	background: #c0482a;
 }
 .layout-top-nav .main-header .navbar {
 	margin-left: 0
@@ -5745,6 +5745,7 @@ filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#e73f7c', endCo
 .main-header .navbar .navbar-nav > li.p-ph-res > a {
 	padding: 22px 18px 21px 18px;
 }
+
 
 
 
