@@ -32,6 +32,14 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\Column(type: 'string', length: 255, nullable: true)]
     private $prenom;
 
+    #[ORM\Column(type: 'datetime')]
+    private $createdAt;
+
+    public function __construct(){
+        $this->createdAt = new \DateTime();
+        $this->roles = ['ROLE_USER'] ;
+    }
+
     public function getId(): ?int
     {
         return $this->id;
@@ -141,6 +149,18 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     public function setPrenom(?string $prenom): self
     {
         $this->prenom = $prenom;
+
+        return $this;
+    }
+
+    public function getCreatedAt(): ?\DateTimeInterface
+    {
+        return $this->createdAt;
+    }
+
+    public function setCreatedAt(\DateTimeInterface $createdAt): self
+    {
+        $this->createdAt = $createdAt;
 
         return $this;
     }

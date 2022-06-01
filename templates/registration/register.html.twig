@@ -1,17 +1,59 @@
-{% extends 'baseAdmin.html.twig' %}
+{% extends 'baseUser.html.twig' %}
 
 {% block title %}Inscription{% endblock %}
 
 {% block body %}
-    <h1>Inscription</h1>
-
+    <div class="login-box">
+    
+  <div class="login-box-body">
+  <div class="m-t-2"> <a href="{{ path('app_main')}}" class="text-center">Retour à l'acceuil</a></div>
+    
+    <div class="social-auth-links text-center">
+      <p>Inscription</p>
+      </div>
+       
     {{ form_start(registrationForm) }}
-        {{ form_row(registrationForm.email) }}
-        {{ form_row(registrationForm.plainPassword, {
-            label: 'Password'
+    <div class="form-group has-feedback">
+        {{ form_errors(registrationForm) }}
+    </div>
+    <div class="form-group has-feedback">
+        {{ form_row(registrationForm.nom,{
+           'attr': {'class': 'form-control sty1'}
         }) }}
-        {{ form_row(registrationForm.agreeTerms) }}
-
-        <button type="submit" class="btn">Enregistrer</button>
+    </div>
+    <div class="form-group has-feedback">
+        {{ form_row(registrationForm.prenom,{
+           'attr': {'class': 'form-control sty1'}
+        }) }}
+    </div>
+    <div class="form-group has-feedback">
+        {{ form_row(registrationForm.email,{
+           'attr': {'class': 'form-control sty1'}
+        }
+        ) }}
+    </div>
+      <div class="form-group has-feedback">
+        {{ form_row(registrationForm.plainPassword, {
+            label: 'Mot de passe',
+           'attr': {'class': 'form-control sty1'}
+        }) }}
+    </div>
+      <div class="col-xs-8">
+          <div class="checkbox icheck">
+        {{ form_row(registrationForm.agreeTerms, {
+            label:'Conditions genérales'     
+         }) }}
+          </div>
+        </div>
+        <!-- /.col -->
+       <div class="col-xs-4 m-t-1">
+        <button type="submit" class="btn btn-primary btn-block btn-flat">S'inscrire</button>
+        </div>
+        <!-- /.col --> 
     {{ form_end(registrationForm) }}
+     <div class="m-t-2">J'ai un compte? <a href="pages-login.html" class="text-center">Connexion</a></div>
+  </div>
+  <!-- /.login-box-body --> 
+</div>
+<!-- /.login-box --> 
 {% endblock %}
