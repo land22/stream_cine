@@ -46,18 +46,20 @@
         <ul class="nav navbar-nav">
          
           <!-- User Account: style can be found in dropdown.less -->
-          <li class="dropdown user user-menu p-ph-res"> <a href="#" class="dropdown-toggle" data-toggle="dropdown"> <img src="{{ asset('assets/backend/img/img1.jpg')}}" class="user-image" alt="User Image"> <span class="hidden-xs">Alexander Pierce</span> </a>
+          <li class="dropdown user user-menu p-ph-res"> <a href="#" class="dropdown-toggle" data-toggle="dropdown"> <img src="{{ asset('assets/backend/img/img1.jpg')}}" class="user-image" alt="User Image">{% if app.user %} <span class="hidden-xs">{{ app.user.prenom }} {{ app.user.nom }} </span>{% endif %} </a>
             <ul class="dropdown-menu">
               <li class="user-header">
                 <div class="pull-left user-img"><img src="{{ asset('assets/backend/img/img1.jpg')}}" class="img-responsive" alt="User"></div>
-                <p class="text-left">Florence Douglas <small>florence@gmail.com</small> </p>
-                <div class="view-link text-left"><a href="#">View Profile</a> </div>
+                {% if app.user %}
+                <p class="text-left">{{ app.user.prenom }} {{ app.user.nom }} <small>{{ app.user.email }}</small> </p>
+                 
               </li>
-              <li><a href="#"><i class="icon-profile-male"></i> My Profile</a></li>
+              <li><a href="#"><i class="icon-profile-male"></i> Mon profil</a></li>
               <li role="separator" class="divider"></li>
-              <li><a href="#"><i class="icon-gears"></i> Account Setting</a></li>
+              <li><a href="#"><i class="icon-gears"></i> Modifier le profil</a></li>
               <li role="separator" class="divider"></li>
-              <li><a href="#"><i class="fa fa-power-off"></i> Logout</a></li>
+              <li><a href="{{ path('app_logout')}}"><i class="fa fa-power-off"></i> Déconnexion</a></li>
+              {% endif %}
             </ul>
           </li>
         </ul>
@@ -72,8 +74,11 @@
       <div class="user-panel">
         <div class="image text-center"><img src="{{ asset('assets/backend/img/img1.jpg')}}" class="img-circle" alt="User Image"> </div>
         <div class="info">
-          <p>Alexander Pierce</p>
-          <a href="#"><i class="fa fa-cog"></i></a> <a href="#"><i class="fa fa-envelope-o"></i></a> <a href="#"><i class="fa fa-power-off"></i></a> </div>
+         {% if app.user %}
+          <p>{{ app.user.prenom }} {{ app.user.nom }}</p>   
+         <a href="{{ path('app_logout')}}"><i class="fa fa-power-off"></i></a> 
+         {% endif %}
+         </div>
       </div>
       
       <!-- sidebar menu: : style can be found in sidebar.less -->
