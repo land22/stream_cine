@@ -8,6 +8,7 @@ use App\Repository\VideoRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+use App\Service\FileUploader;
 use Symfony\Component\Routing\Annotation\Route;
 
 #[Route('/video')]
@@ -22,13 +23,20 @@ class VideoController extends AbstractController
     }
 
     #[Route('/new', name: 'app_video_new', methods: ['GET', 'POST'])]
-    public function new(Request $request, VideoRepository $videoRepository): Response
+    public function new(Request $request, VideoRepository $videoRepository, FileUploader $fileUploader): Response
     {
         $video = new Video();
         $form = $this->createForm(VideoType::class, $video);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            
+            $imageFile = $form->get('image')->getData();
+        if ($imageFile) {
+            $imageFileName = $fileUploader->upload($imageFile);
+            $video->setImage($imageFileName);
+        }
+        $video->setUser($this->getUser());
             $videoRepository->add($video, true);
 
             return $this->redirectToRoute('app_video_index', [], Response::HTTP_SEE_OTHER);

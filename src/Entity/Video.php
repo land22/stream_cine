@@ -5,6 +5,10 @@ namespace App\Entity;
 use App\Repository\VideoRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
+use App\Entity\User;
+use App\Entity\Commentaire;
+use App\Entity\Categorie;
+use App\Entity\Cinema;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: VideoRepository::class)]
@@ -59,6 +63,7 @@ class Video
         $this->commentaires = new ArrayCollection();
         $this->cinemas = new ArrayCollection();
         $this->projections = new ArrayCollection();
+        $this->createdAt = new \DateTime();
     }
 
     public function getId(): ?int

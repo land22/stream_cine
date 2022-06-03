@@ -1,20 +1,18 @@
-{% extends 'base.html.twig' %}
+{% extends 'baseAdmin.html.twig' %}
 
-{% block title %}Video index{% endblock %}
+{% block title %}Listes des videos{% endblock %}
 
 {% block body %}
-    <h1>Video index</h1>
+    <h1>Liste des videos</h1>
 
     <table class="table">
         <thead>
             <tr>
-                <th>Id</th>
                 <th>Titre</th>
                 <th>Description</th>
                 <th>Type</th>
                 <th>Acteur</th>
-                <th>Realisateur</th>
-                <th>CreatedAt</th>
+                <th>Realisateur</th>             
                 <th>Url</th>
                 <th>Image</th>
                 <th>actions</th>
@@ -23,13 +21,11 @@
         <tbody>
         {% for video in videos %}
             <tr>
-                <td>{{ video.id }}</td>
                 <td>{{ video.titre }}</td>
                 <td>{{ video.description }}</td>
                 <td>{{ video.type }}</td>
                 <td>{{ video.acteur }}</td>
                 <td>{{ video.realisateur }}</td>
-                <td>{{ video.createdAt ? video.createdAt|date('Y-m-d H:i:s') : '' }}</td>
                 <td>{{ video.url }}</td>
                 <td>{{ video.image }}</td>
                 <td>
@@ -39,11 +35,11 @@
             </tr>
         {% else %}
             <tr>
-                <td colspan="10">no records found</td>
+                <td colspan="10">Pas de video enregistrée !!!</td>
             </tr>
         {% endfor %}
         </tbody>
     </table>
 
-    <a href="{{ path('app_video_new') }}">Create new</a>
+    <a href="{{ path('app_video_new') }}">Enregister une vidéo</a>
 {% endblock %}
