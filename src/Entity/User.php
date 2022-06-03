@@ -46,12 +46,20 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\OneToMany(mappedBy: 'user', targetEntity: Categorie::class)]
     private $categories;
 
+    #[ORM\OneToMany(mappedBy: 'user', targetEntity: Projection::class)]
+    private $projections;
+
+    #[ORM\OneToMany(mappedBy: 'user', targetEntity: Reservation::class)]
+    private $reservations;
+
     public function __construct(){
         $this->createdAt = new \DateTime();
         $this->roles = ['ROLE_USER'] ;
         $this->videos = new ArrayCollection();
         $this->commentaires = new ArrayCollection();
         $this->categories = new ArrayCollection();
+        $this->projections = new ArrayCollection();
+        $this->reservations = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -263,6 +271,66 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
             // set the owning side to null (unless already changed)
             if ($category->getUser() === $this) {
                 $category->setUser(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Projection>
+     */
+    public function getProjections(): Collection
+    {
+        return $this->projections;
+    }
+
+    public function addProjection(Projection $projection): self
+    {
+        if (!$this->projections->contains($projection)) {
+            $this->projections[] = $projection;
+            $projection->setUser($this);
+        }
+
+        return $this;
+    }
+
+    public function removeProjection(Projection $projection): self
+    {
+        if ($this->projections->removeElement($projection)) {
+            // set the owning side to null (unless already changed)
+            if ($projection->getUser() === $this) {
+                $projection->setUser(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Reservation>
+     */
+    public function getReservations(): Collection
+    {
+        return $this->reservations;
+    }
+
+    public function addReservation(Reservation $reservation): self
+    {
+        if (!$this->reservations->contains($reservation)) {
+            $this->reservations[] = $reservation;
+            $reservation->setUser($this);
+        }
+
+        return $this;
+    }
+
+    public function removeReservation(Reservation $reservation): self
+    {
+        if ($this->reservations->removeElement($reservation)) {
+            // set the owning side to null (unless already changed)
+            if ($reservation->getUser() === $this) {
+                $reservation->setUser(null);
             }
         }
 

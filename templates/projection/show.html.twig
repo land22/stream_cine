@@ -1,0 +1,26 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Projection{% endblock %}
+
+{% block body %}
+    <h1>Projection</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ projection.id }}</td>
+            </tr>
+            <tr>
+                <th>HeureProjection</th>
+                <td>{{ projection.heureProjection ? projection.heureProjection|date('Y-m-d H:i:s') : '' }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_projection_index') }}">back to list</a>
+
+    <a href="{{ path('app_projection_edit', {'id': projection.id}) }}">edit</a>
+
+    {{ include('projection/_delete_form.html.twig') }}
+{% endblock %}

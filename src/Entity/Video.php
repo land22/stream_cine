@@ -48,9 +48,17 @@ class Video
     #[ORM\Column(type: 'string', length: 255, nullable: true)]
     private $image;
 
+    #[ORM\ManyToMany(targetEntity: Cinema::class, mappedBy: 'video')]
+    private $cinemas;
+
+    #[ORM\OneToMany(mappedBy: 'video', targetEntity: Projection::class)]
+    private $projections;
+
     public function __construct()
     {
         $this->commentaires = new ArrayCollection();
+        $this->cinemas = new ArrayCollection();
+        $this->projections = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -204,6 +212,63 @@ class Video
     public function setImage(?string $image): self
     {
         $this->image = $image;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Cinema>
+     */
+    public function getCinemas(): Collection
+    {
+        return $this->cinemas;
+    }
+
+    public function addCinema(Cinema $cinema): self
+    {
+        if (!$this->cinemas->contains($cinema)) {
+            $this->cinemas[] = $cinema;
+            $cinema->addVideo($this);
+        }
+
+        return $this;
+    }
+
+    public function removeCinema(Cinema $cinema): self
+    {
+        if ($this->cinemas->removeElement($cinema)) {
+            $cinema->removeVideo($this);
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Projection>
+     */
+    public function getProjections(): Collection
+    {
+        return $this->projections;
+    }
+
+    public function addProjection(Projection $projection): self
+    {
+        if (!$this->projections->contains($projection)) {
+            $this->projections[] = $projection;
+            $projection->setVideo($this);
+        }
+
+        return $this;
+    }
+
+    public function removeProjection(Projection $projection): self
+    {
+        if ($this->projections->removeElement($projection)) {
+            // set the owning side to null (unless already changed)
+            if ($projection->getVideo() === $this) {
+                $projection->setVideo(null);
+            }
+        }
 
         return $this;
     }
