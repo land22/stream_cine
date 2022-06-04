@@ -1,4 +1,7 @@
 {{ form_start(form) }}
-    {{ form_widget(form) }}
+    <div class="form-group">
+        {{ form_label(form.nom, 'Nom de la catégorie du film (horreur, aventure, enquête, documentaire ...)', {'label_attr': {'class': 'foo'}}) }}
+        {{ form_widget(form.nom, {'attr': {'class': 'form-control'}}) }}
+    </div>
     <button class="btn">{{ button_label|default('Enregister') }}</button>
 {{ form_end(form) }}

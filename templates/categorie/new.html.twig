@@ -3,9 +3,16 @@
 {% block title %}Nouvelle Categorie{% endblock %}
 
 {% block body %}
-    <h1>Nouvelle Categorie</h1>
+    <div class="content-header sty-one">
+      <h1>Enregistrement d'une nouvelle catégorie</h1>
+      <ol class="breadcrumb">
+        <li class="sub-bread"><a href="{{ path('app_categorie_index') }}" class="btn btn-warning">retour à la liste</a></li>
+      </ol>
+    </div>
+    <div class="content">
+    <div class="card-body">
 
     {{ include('categorie/_form.html.twig') }}
-
-    <a href="{{ path('app_categorie_index') }}">Retour à la liste</a>
+    </div>
+    </div>
 {% endblock %}

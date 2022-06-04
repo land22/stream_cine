@@ -31,11 +31,7 @@
     <div class="wrapper boxed-wrapper">
         <header class="main-header"> 
     <!-- Logo --> 
-    <a href="index.html" class="logo blue-bg"> 
-    <!-- mini logo for sidebar mini 50x50 pixels --> 
-    <span class="logo-mini"><img src="{{ asset('assets/backend/img/logo-n.png')}}" alt=""></span> 
-    <!-- logo for regular state and mobile devices --> 
-    <span class="logo-lg"><img src="{{ asset('assets/backend/img/logo.png')}}" alt=""></span> </a> 
+    <a href="{{ path('app_main')}}" class="logo blue-bg">Retour sur le site  </a> 
     <!-- Header Navbar: style can be found in header.less -->
     <nav class="navbar blue-bg navbar-static-top"> 
       <!-- Sidebar toggle button-->
@@ -133,7 +129,7 @@
   </aside>
         
        <!-- Content Wrapper. Contains page content -->
-       <div class="content-wrapper"> 
+       <div class="content-wrapper "> 
         {% block body %}{% endblock %}
         </main>
         </div>

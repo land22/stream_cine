@@ -14,7 +14,6 @@ class CinemaType extends AbstractType
         $builder
             ->add('nom')
             ->add('localisation')
-            ->add('video')
         ;
     }
 

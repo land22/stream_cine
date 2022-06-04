@@ -1,4 +1,37 @@
 {{ form_start(form) }}
-    {{ form_widget(form) }}
+    <div class="form-group">
+        {{ form_label(form.titre, 'Titre du film', {'label_attr': {'class': 'foo'}}) }}
+        {{ form_widget(form.titre, {'attr': {'class': 'form-control'}}) }}
+    </div>
+    <div class="form-group">
+        {{ form_label(form.description, 'Une description du film', {'label_attr': {'class': 'foo'}}) }}
+        {{ form_widget(form.description, {'attr': {'class': 'form-control'}}) }}
+    </div>
+    <div class="form-group">
+        {{ form_label(form.type, 'Type du film (serie ou film)', {'label_attr': {'class': 'foo'}}) }}
+        {{ form_widget(form.type, {'attr': {'class': 'form-control'}}) }}
+    </div>
+    <div class="form-group">
+        {{ form_label(form.acteur, 'Nom de l\'acteur principal', {'label_attr': {'class': 'foo'}}) }}
+        {{ form_widget(form.acteur, {'attr': {'class': 'form-control'}}) }}
+    </div>
+     <div class="form-group">
+        {{ form_label(form.realisateur, 'le nom du réalisateur du film', {'label_attr': {'class': 'foo'}}) }}
+        {{ form_widget(form.realisateur, {'attr': {'class': 'form-control'}}) }}
+    </div>
+    <div class="form-group">
+        {{ form_label(form.url, 'L\'url du film', {'label_attr': {'class': 'foo'}}) }}
+        {{ form_widget(form.url, {'attr': {'class': 'form-control'}}) }}
+    </div>
+    <div class="form-group">
+        {{ form_label(form.image, 'Une image pour illustrer le film', {'label_attr': {'class': 'foo'}}) }}
+        {{ form_widget(form.image, {'attr': {'class': 'form-control'}}) }}
+    </div>
+    <div class="form-group">
+        {{ form_label(form.categorie, 'La catégorie du film (si la catégorie n\'est pas dans la liste, vous pouvez vous rendre dans la page des catégories pour ajouter)', {'label_attr': {'class': 'foo'}}) }}
+        {{ form_widget(form.categorie, {'attr': {'class': 'form-control'}}) }}
+    </div>
+
+
     <button class="btn">{{ button_label|default('Enregistrer') }}</button>
 {{ form_end(form) }}

@@ -3,9 +3,16 @@
 {% block title %}Projection{% endblock %}
 
 {% block body %}
-    <h1>Ajouter une Projection</h1>
+    <div class="content-header sty-one">
+      <h1>Ajouter une Projection</h1>
+      <ol class="breadcrumb">
+        <li class="sub-bread"><a href="{{ path('app_projection_index') }}" class="btn btn-warning">retour à la liste</a></li>
+      </ol>
+    </div>
+    <div class="content">
+    <div class="card-body">
 
     {{ include('projection/_form.html.twig') }}
-
-    <a href="{{ path('app_projection_index') }}">Retour à la liste</a>
+    </div>
+    </div>
 {% endblock %}

@@ -3,33 +3,43 @@
 {% block title %}Cinema{% endblock %}
 
 {% block body %}
-    <h1>Liste Cinema </h1>
+    
+    <div class="content-header sty-one">
+      <h1>Liste Cinema </h1>
+      <ol class="breadcrumb">
+        <li><a href="{{ path('app_cinema_new') }}" class="btn btn-warning">Ajouter un nouveau Cinema</a></li>
+      </ol>
+    </div>
+      <div class="content">
+         <div class="info-box">
+         <div class="table-responsive">
 
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Nom</th>
-                <th>Localisation</th>
-                <th>actions</th>
-            </tr>
-        </thead>
-        <tbody>
-        {% for cinema in cinemas %}
-            <tr>
-                <td>{{ cinema.nom }}</td>
-                <td>{{ cinema.localisation }}</td>
-                <td>
-                    <a href="{{ path('app_cinema_show', {'id': cinema.id}) }}">Voir</a>
-                    <a href="{{ path('app_cinema_edit', {'id': cinema.id}) }}">Modifier</a>
-                </td>
-            </tr>
-        {% else %}
-            <tr>
-                <td colspan="4">Pas d'enregistrement trouvé</td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
-
-    <a href="{{ path('app_cinema_new') }}">Ajouter un nouveau Cinema</a>
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Nom</th>
+                            <th>Localisation</th>
+                            <th>actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    {% for cinema in cinemas %}
+                        <tr>
+                            <td>{{ cinema.nom }}</td>
+                            <td>{{ cinema.localisation }}</td>
+                            <td>
+                                <a href="{{ path('app_cinema_show', {'id': cinema.id}) }}">Voir</a>
+                                <a href="{{ path('app_cinema_edit', {'id': cinema.id}) }}">Modifier</a>
+                            </td>
+                        </tr>
+                    {% else %}
+                        <tr>
+                            <td colspan="4">Pas d'enregistrement trouvé</td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+        </div>
+    </div>
+    </div>
 {% endblock %}

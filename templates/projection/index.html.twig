@@ -3,7 +3,16 @@
 {% block title %}Projection{% endblock %}
 
 {% block body %}
-    <h1>Liste des projections</h1>
+    
+    <div class="content-header sty-one">
+      <h1>Liste des projections</h1>
+      <ol class="breadcrumb">
+        <li><a href="{{ path('app_projection_new') }}" class="btn btn-warning">Enregistrer une projection</a></li>
+      </ol>
+    </div>
+      <div class="content">
+         <div class="info-box">
+         <div class="table-responsive">
 
     <table class="table">
         <thead>
@@ -30,5 +39,7 @@
         </tbody>
     </table>
 
-    <a href="{{ path('app_projection_new') }}">Enregistrer une reservation</a>
+    </div>
+    </div>
+    </div>
 {% endblock %}

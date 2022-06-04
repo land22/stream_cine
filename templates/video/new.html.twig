@@ -3,9 +3,18 @@
 {% block title %}Nouvelle video{% endblock %}
 
 {% block body %}
-    <h1>Création d'une nouvelle Video</h1>
+    
+    <div class="content-header sty-one">
+      <h1>Enregistrement d'une nouvelle Video</h1>
+      <ol class="breadcrumb">
+        <li class="sub-bread"><a href="{{ path('app_video_index') }}" class="btn btn-warning">retour à la liste</a></li>
+      </ol>
+    </div>
+    <div class="content">
+    <div class="card-body">
+       {{ include('video/_form.html.twig') }}
+    </div>
+    </div>
 
-    {{ include('video/_form.html.twig') }}
-
-    <a href="{{ path('app_video_index') }}">retour à la liste</a>
+    
 {% endblock %}

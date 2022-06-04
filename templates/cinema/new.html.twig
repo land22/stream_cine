@@ -3,9 +3,18 @@
 {% block title %}Cinema{% endblock %}
 
 {% block body %}
-    <h1>En register Cinema</h1>
+    
+    <div class="content-header sty-one">
+      <h1>Enregistrer Cinema</h1>
+      <ol class="breadcrumb">
+        <li class="sub-bread"><a href="{{ path('app_cinema_index') }}" class="btn btn-warning">retour à la liste</a></li>
+      </ol>
+    </div>
+    <div class="content">
+    <div class="card-body">
 
     {{ include('cinema/_form.html.twig') }}
-
-    <a href="{{ path('app_cinema_index') }}">Retour à la liste</a>
+    </div>
+    </div>
+  
 {% endblock %}
