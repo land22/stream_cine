@@ -29,6 +29,7 @@ class ProjectionController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            $projection->setUser($this->getUser());
             $projectionRepository->add($projection, true);
 
             return $this->redirectToRoute('app_projection_index', [], Response::HTTP_SEE_OTHER);

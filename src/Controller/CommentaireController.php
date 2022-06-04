@@ -29,6 +29,7 @@ class CommentaireController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            $commentaire->setUser($this->getUser());
             $commentaireRepository->add($commentaire, true);
 
             return $this->redirectToRoute('app_commentaire_index', [], Response::HTTP_SEE_OTHER);

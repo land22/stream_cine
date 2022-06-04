@@ -29,6 +29,7 @@ class ReservationController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            $reservation->setUser($this->getUser());
             $reservationRepository->add($reservation, true);
 
             return $this->redirectToRoute('app_reservation_index', [], Response::HTTP_SEE_OTHER);
