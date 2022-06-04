@@ -15,7 +15,6 @@ class ProjectionType extends AbstractType
             ->add('heureProjection')
             ->add('video')
             ->add('cinema')
-            ->add('user')
         ;
     }
 

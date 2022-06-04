@@ -26,7 +26,11 @@ class Commentaire
 
     #[ORM\ManyToOne(targetEntity: video::class, inversedBy: 'commentaires')]
     private $video;
-
+    
+    public function __construct()
+    {
+        $this->createdAt = new \DateTime();
+    }
     public function getId(): ?int
     {
         return $this->id;

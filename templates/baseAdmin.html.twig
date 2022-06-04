@@ -84,6 +84,11 @@
       <!-- sidebar menu: : style can be found in sidebar.less -->
       <ul class="sidebar-menu" data-widget="tree">
         <li class="header">Compte administrateur</li>
+        <li class="active treeview"> <a href="#"> <i class="fa fa-dashboard"></i> <span>Utilisateurs</span> <span class="pull-right-container"> <i class="fa fa-angle-left pull-right"></i> </span> </a>
+          <ul class="treeview-menu">
+            <li class="active"><a href="#">Liste des utilisateurs</a></li>
+          </ul>
+        </li>
         <li class="active treeview"> <a href="#"> <i class="fa fa-dashboard"></i> <span>Videos</span> <span class="pull-right-container"> <i class="fa fa-angle-left pull-right"></i> </span> </a>
           <ul class="treeview-menu">
             <li class="active"><a href="{{ path('app_video_index')}}">Liste des videos</a></li>
@@ -91,84 +96,38 @@
 
           </ul>
         </li>
-        <li class="treeview"> <a href="#"> <i class="fa fa-bullseye"></i> <span>Apps</span> <span class="pull-right-container"> <i class="fa fa-angle-left pull-right"></i> </span> </a>
+        <li class="active treeview"> <a href="#"> <i class="fa fa-bullseye"></i> <span>Catégorie de film</span> <span class="pull-right-container"> <i class="fa fa-angle-left pull-right"></i> </span> </a>
           <ul class="treeview-menu">
-            <li><a href="apps-calendar.html">Calendar</a></li>
+            <li><a href="{{path('app_categorie_index')}}">Liste de categorie</a></li>
+            <li><a href="{{path('app_categorie_new')}}">Ajouter une categorie</a></li>
           </ul>
         </li>
-        <li class="treeview"> <a href="#"> <i class="fa fa-envelope-o "></i> <span>Inbox</span> <span class="pull-right-container"> <i class="fa fa-angle-left pull-right"></i> </span> </a>
+        <li class="active treeview"> <a href="#"> <i class="fa fa-briefcase"></i> <span>Cinema</span> <span class="pull-right-container"> <i class="fa fa-angle-left pull-right"></i> </span> </a>
           <ul class="treeview-menu">
-            <li><a href="apps-mailbox.html">Mailbox</a></li>
+            <li><a href="{{path('app_cinema_index')}}" class="active">Liste des cinémas</a></li>
+            <li><a href="{{path('app_categorie_new')}}">Ajouter un cinema</a></li>
           </ul>
         </li>
-        <li class="treeview"> <a href="#"> <i class="fa fa-briefcase"></i> <span>UI Elements</span> <span class="pull-right-container"> <i class="fa fa-angle-left pull-right"></i> </span> </a>
+        <li class="active treeview"> <a href="#"> <i class="fa fa-edit"></i> <span>Commentaire</span> <span class="pull-right-container"> <i class="fa fa-angle-left pull-right"></i> </span> </a>
           <ul class="treeview-menu">
-            <li><a href="ui-cards.html" class="active">Cards</a></li>
-            <li><a href="ui-user-card.html">User Cards</a></li>
+            <li><a href="{{path('app_commentaire_index')}}">Liste des commentaires</a></li>
           </ul>
         </li>
-        <li class="header">FORMS, TABLE & WIDGETS</li>
-        <li class="treeview"> <a href="#"> <i class="fa fa-edit"></i> <span>Forms</span> <span class="pull-right-container"> <i class="fa fa-angle-left pull-right"></i> </span> </a>
+        <li class="active treeview"> <a href="#"> <i class="fa fa-table"></i> <span>Reservation</span> <span class="pull-right-container"> <i class="fa fa-angle-left pull-right"></i> </span> </a>
           <ul class="treeview-menu">
-            <li><a href="form-elements.html">Form Elements</a></li>
+            <li><a href="{{path('app_reservation_index')}}" class="active">Liste des reservations</a></li>
           </ul>
         </li>
-        <li class="treeview"> <a href="#"> <i class="fa fa-table"></i> <span>Tables</span> <span class="pull-right-container"> <i class="fa fa-angle-left pull-right"></i> </span> </a>
+        <li class=" active treeview"> <a href="#"> <i class="fa fa-files-o"></i> <span>Projection</span> <span class="pull-right-container"> <i class="fa fa-angle-left pull-right"></i> </span> </a>
           <ul class="treeview-menu">
-            <li><a href="table-basic.html">Basic Tables</a></li>
+            <li><a href="{{path('app_projection_index')}}">Liste des projections</a></li>
+            <li><a href="{{path('app_projection_new')}}">Enregistrer une reservation</a></li>
           </ul>
         </li>
-        <li class="treeview"> <a href="#"> <i class="fa fa-th"></i> <span>Widgets</span> <span class="pull-right-container"> <i class="fa fa-angle-left pull-right"></i> </span> </a>
-          <ul class="treeview-menu">
-            <li><a href="widget-data.html">Data Widgets</a></li>
-          </ul>
+        <li class="header">Personnels</li>
+        <li class="treeview"> <a href="#"> <i class="fa fa-th"></i> <span>Mes commentaires</span> <span class="pull-right-container"> <i class="fa fa-angle-left pull-right"></i> </span> </a>
+        <li class="treeview"> <a href="#"> <i class="fa fa-th"></i> <span>Mes Reservations</span> <span class="pull-right-container"> <i class="fa fa-angle-left pull-right"></i> </span> </a>
         </li>
-        <li class="header">EXTRA COMPONENTS</li>
-        <li class="treeview"> <a href="#"><i class="fa fa-bar-chart"></i> <span>Charts</span> <span class="pull-right-container"> <i class="fa fa-angle-left pull-right"></i> </span> </a>
-          <ul class="treeview-menu">
-            <li><a href="chart-morris.html">Morris Chart</a></li>
-          </ul>
-        </li>
-        <li class="treeview"> <a href="#"> <i class="fa fa-files-o"></i> <span>Sample Pages</span> <span class="pull-right-container"> <i class="fa fa-angle-left pull-right"></i> </span> </a>
-          <ul class="treeview-menu">
-            <li><a href="pages-blank.html">Blank page</a></li>
-            <li class="treeview"><a href="#">Authentication <span class="pull-right-container"> <i class="fa fa-angle-left pull-right"></i> </span> </a>
-              <ul class="treeview-menu">
-                <li><a href="pages-login.html">Login 1</a></li>
-              </ul>
-            </li>
-            <li><a href="pages-profile.html">Profile page</a></li>
-          </ul>
-        </li>
-        <li class="treeview"> <a href="#"> <i class="fa fa-map-marker"></i> <span>Maps</span> <span class="pull-right-container"> <i class="fa fa-angle-left pull-right"></i> </span> </a>
-          <ul class="treeview-menu">
-            <li><a href="map-google.html">Google Maps</a></li>
-            <li><a href="map-vector.html" class="active">Vector Maps</a></li>
-          </ul>
-        </li>
-        <li class="treeview"> <a href="#"> <i class="fa fa-paint-brush"></i> <span>Icons</span> <span class="pull-right-container"> <i class="fa fa-angle-left pull-right"></i> </span> </a>
-          <ul class="treeview-menu">
-            <li><a href="icon-fontawesome.html">Fontawesome Icons</a></li>
-          </ul>
-        </li>
-        <li class="treeview"> <a href="#"> <i class="fa fa-share"></i> <span>Multilevel</span> <span class="pull-right-container"> <i class="fa fa-angle-left pull-right"></i> </span> </a>
-          <ul class="treeview-menu">
-            <li><a href="#">Level One</a></li>
-            <li class="treeview"> <a href="#">Level One <span class="pull-right-container"> <i class="fa fa-angle-left pull-right"></i> </span> </a>
-              <ul class="treeview-menu">
-                <li><a href="#"> Level Two</a></li>
-                <li class="treeview"> <a href="#">Level Two <span class="pull-right-container"> <i class="fa fa-angle-left pull-right"></i> </span> </a>
-                  <ul class="treeview-menu">
-                    <li><a href="#">Level Three</a></li>
-                    <li><a href="#">Level Three</a></li>
-                  </ul>
-                </li>
-              </ul>
-            </li>
-            <li><a href="#">Level One</a></li>
-          </ul>
-        </li>
-      </ul>
     </div>
     <!-- /.sidebar --> 
   </aside>

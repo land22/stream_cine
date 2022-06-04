@@ -1,11 +1,11 @@
-{% extends 'base.html.twig' %}
+{% extends 'baseAdmin.html.twig' %}
 
-{% block title %}New Projection{% endblock %}
+{% block title %}Projection{% endblock %}
 
 {% block body %}
-    <h1>Create new Projection</h1>
+    <h1>Ajouter une Projection</h1>
 
     {{ include('projection/_form.html.twig') }}
 
-    <a href="{{ path('app_projection_index') }}">back to list</a>
+    <a href="{{ path('app_projection_index') }}">Retour à la liste</a>
 {% endblock %}

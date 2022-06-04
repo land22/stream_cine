@@ -13,8 +13,6 @@ class CategorieType extends AbstractType
     {
         $builder
             ->add('nom')
-            ->add('createdAt')
-            ->add('user')
         ;
     }
 

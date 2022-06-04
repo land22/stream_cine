@@ -1,14 +1,13 @@
-{% extends 'base.html.twig' %}
+{% extends 'baseAdmin.html.twig' %}
 
-{% block title %}Projection index{% endblock %}
+{% block title %}Projection{% endblock %}
 
 {% block body %}
-    <h1>Projection index</h1>
+    <h1>Liste des projections</h1>
 
     <table class="table">
         <thead>
             <tr>
-                <th>Id</th>
                 <th>HeureProjection</th>
                 <th>actions</th>
             </tr>
@@ -19,17 +18,17 @@
                 <td>{{ projection.id }}</td>
                 <td>{{ projection.heureProjection ? projection.heureProjection|date('Y-m-d H:i:s') : '' }}</td>
                 <td>
-                    <a href="{{ path('app_projection_show', {'id': projection.id}) }}">show</a>
-                    <a href="{{ path('app_projection_edit', {'id': projection.id}) }}">edit</a>
+                    <a href="{{ path('app_projection_show', {'id': projection.id}) }}">voir</a>
+                    <a href="{{ path('app_projection_edit', {'id': projection.id}) }}">modifier</a>
                 </td>
             </tr>
         {% else %}
             <tr>
-                <td colspan="3">no records found</td>
+                <td colspan="3">Pas de projection enregistrée !!!</td>
             </tr>
         {% endfor %}
         </tbody>
     </table>
 
-    <a href="{{ path('app_projection_new') }}">Create new</a>
+    <a href="{{ path('app_projection_new') }}">Enregistrer une reservation</a>
 {% endblock %}
