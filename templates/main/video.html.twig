@@ -1,0 +1,76 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Les videos{% endblock %}
+
+{% block body %}
+
+                    <!-- breadcrumb-area -->
+            <section class="breadcrumb-area breadcrumb-bg" data-background="img/bg/breadcrumb_bg.jpg">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="breadcrumb-content">
+                                <h2 class="title">Nos <span>Videos</span></h2>
+                                <nav aria-label="breadcrumb">
+                                    <ol class="breadcrumb">
+                                        <li class="breadcrumb-item"><a href="{{ path('app_main')}}">Accueil</a></li>
+                                        <li class="breadcrumb-item active" aria-current="page">Videos</li>
+                                    </ol>
+                                </nav>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <!-- breadcrumb-area-end -->
+
+            <!-- movie-area -->
+            <section class="movie-area movie-bg" data-background="img/bg/movie_bg.jpg">
+                <div class="container">
+                    
+                    <div class="row tr-movie-active">
+                    {% for video in videos %}
+                        
+                    
+                        <div class="col-xl-3 col-lg-4 col-sm-6 grid-item grid-sizer cat-two">
+                            <div class="movie-item movie-item-three mb-50">
+                                <div class="movie-poster">
+                                    <img src="{{ asset('uploads/images/' ~ video.image )}}" alt="">
+                                    <ul class="overlay-btn">
+                                        <li class="rating">
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                        </li>
+                                        <li><a href="{{ video.url }}" class="popup-video btn">Regarder la video</a></li>
+                                        <li><a href="movie-details.html" class="btn">Details</a></li>
+                                    </ul>
+                                </div>
+                                <div class="movie-content">
+                                    <div class="top">
+                                        <h2 class="title"><a href="movie-details.html" style="color:black">{{ video.titre }}</a></h2>
+                                        <span class="date">{{ video.createdAt|date("Y") }}</span>
+                                    </div>
+                                    <div class="bottom">
+                                        <ul>
+                                            <li><span class="quality">HD</span></li>
+                                            <li>
+    
+                                                <span class="rating"><i class="fas fa-thumbs-up"></i> 3.5</span>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        {% endfor %}
+                    
+                    </div>
+                </div>
+            </section>
+            <!-- movie-area-end -->
+
+            
+{% endblock %}

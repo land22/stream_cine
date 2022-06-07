@@ -2,6 +2,7 @@
 
 namespace App\Form;
 
+use App\Entity\Categorie;
 use App\Entity\Video;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
@@ -9,6 +10,7 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Validator\Constraints\File;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 
 class VideoType extends AbstractType
 {
@@ -34,13 +36,16 @@ class VideoType extends AbstractType
                     new File([
                         'maxSize' => '1024k',
                         'mimeTypes' => [
-                            'application/img'
+                            'image/*'
                         ],
                         'mimeTypesMessage' => 'Veuillez soumettre un fichier valide',
                     ])
                 ],
             ])
-            ->add('categorie')
+            ->add('categorie', EntityType::class,[
+                'class'=>Categorie::class,
+                'choice_label'=>'nom'
+            ])
         ;
     }
 

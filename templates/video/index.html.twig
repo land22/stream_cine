@@ -8,7 +8,7 @@
     <div class="content-header sty-one">
       <h1>Liste des videos</h1>
       <ol class="breadcrumb">
-        <li><a href="{{ path('app_video_new') }}" class="btn btn-warning">Enregister une vidéo</a></li>
+        <li><a href="{{ path('app_video_new') }}" class="btn btn-warning">Ajouter une vidéo</a></li>
       </ol>
     </div>
       <div class="content">
@@ -18,12 +18,10 @@
                     <thead>
                         <tr>
                             <th scope="col">Titre</th>
-                            <th scope="col">Description</th>
                             <th scope="col">Type</th>
                             <th scope="col">Acteur</th>
                             <th scope="col">Realisateur</th>             
                             <th scope="col">Url</th>
-                            <th scope="col">Image</th>
                             <th scope="col">actions</th>
                         </tr>
                     </thead>
@@ -31,12 +29,10 @@
                     {% for video in videos %}
                         <tr>
                             <td>{{ video.titre }}</td>
-                            <td>{{ video.description }}</td>
                             <td>{{ video.type }}</td>
                             <td>{{ video.acteur }}</td>
                             <td>{{ video.realisateur }}</td>
                             <td>{{ video.url }}</td>
-                            <td>{{ video.image }}</td>
                             <td>
                                 <a href="{{ path('app_video_show', {'id': video.id}) }}">Voir</a>
                                 <a href="{{ path('app_video_edit', {'id': video.id}) }}">Modifier</a>

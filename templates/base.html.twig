@@ -65,13 +65,10 @@
                                             <li class="active menu-item-has-children"><a href="{{path('app_main')}}">Acceuil</a>
         
                                             </li>
-                                            <li class="menu-item-has-children"><a href="#">Films/Series</a>
-                                                <ul class="submenu">
-                                                    <li><a href="movie.html">Movie</a></li>
-                                                    <li><a href="movie-details.html">Movie Details</a></li>
-                                                </ul>
+                                            <li class="menu-item-has-children"><a href="{{path('app_main_video')}}">Films/Series</a>
+                                        
                                             </li>
-                                            <li><a href="tv-show.html">tv show</a></li>
+            
                                             <li class="menu-item-has-children"><a href="#">blog</a>
                                                 <ul class="submenu">
                                                     <li><a href="blog-details.html">Blog Details</a></li>
@@ -162,9 +159,12 @@
                                     <nav>
                                         <ul class="navigation">
                                             <li><a href="{{path('app_main')}}">Accueil</a></li>
-                                            <li><a href="index.html">Film</a></li>
-                                            <li><a href="index.html">tv show</a></li>
+                                            <li><a href="{{path('app_main_video')}}">Film/Serie</a></li>
+                                            {% if app.user %}
+                                            <li><a href="{{path('app_logout')}}">Déconnexion</a></li>
+                                            {% else %}
                                             <li><a href="{{path('app_login')}}">Connexion / inscription</a></li>
+                                             {% endif %}
                                         </ul>
                                     </nav>
                                 </div>
