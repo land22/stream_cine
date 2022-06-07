@@ -1,0 +1,45 @@
+{% extends 'baseAdmin.html.twig' %}
+
+{% block title %}Liste des utilisateurs{% endblock %}
+
+{% block body %}
+    <div class="content-header sty-one">
+      <h1>Liste des utilisateurs </h1>
+    </div>
+      <div class="content">
+         <div class="info-box">
+         <div class="table-responsive">
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Email</th>
+                <th>Roles</th>
+                <th>Nom</th>
+                <th>Prenom</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for user in users %}
+            <tr>
+                <td>{{ user.email }}</td>
+                <td>{{ user.roles[0] }}</td>
+                <td>{{ user.nom }}</td>
+                <td>{{ user.prenom }}</td>
+                <td>
+                    <a href="{{ path('app_user_show', {'id': user.id}) }}">Voir</a>
+                    <a href="{{ path('app_user_edit', {'id': user.id}) }}">Modifier</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="8">Pas d'utilisateurs !!!</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+      </div>
+    </div>
+    </div>
+{% endblock %}
