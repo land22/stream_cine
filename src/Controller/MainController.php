@@ -6,6 +6,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use App\Repository\VideoRepository;
+use App\Repository\CinemaRepository;
 
 class MainController extends AbstractController
 {
@@ -21,6 +22,13 @@ class MainController extends AbstractController
     {
         return $this->render('main/video.html.twig', [
             'videos' => $videoRepository->findAll()
+        ]);
+    }
+    #[Route('/main/cinema', name: 'app_main_cinema')]
+    public function cinema(CinemaRepository $cinemaRepository): Response
+    {
+        return $this->render('main/cinema.html.twig', [
+            'cinemas' => $cinemaRepository->findAll()
         ]);
     }
 }

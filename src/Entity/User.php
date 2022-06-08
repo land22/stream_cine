@@ -52,6 +52,9 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\OneToMany(mappedBy: 'user', targetEntity: Reservation::class)]
     private $reservations;
 
+    #[ORM\OneToMany(mappedBy: 'user', targetEntity: Cinema::class)]
+    private $cinemas;
+
     public function __construct(){
         $this->createdAt = new \DateTime();
         $this->roles = ['ROLE_USER'] ;
@@ -60,6 +63,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         $this->categories = new ArrayCollection();
         $this->projections = new ArrayCollection();
         $this->reservations = new ArrayCollection();
+        $this->cinemas = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -331,6 +335,36 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
             // set the owning side to null (unless already changed)
             if ($reservation->getUser() === $this) {
                 $reservation->setUser(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Cinema>
+     */
+    public function getCinemas(): Collection
+    {
+        return $this->cinemas;
+    }
+
+    public function addCinema(Cinema $cinema): self
+    {
+        if (!$this->cinemas->contains($cinema)) {
+            $this->cinemas[] = $cinema;
+            $cinema->setUser($this);
+        }
+
+        return $this;
+    }
+
+    public function removeCinema(Cinema $cinema): self
+    {
+        if ($this->cinemas->removeElement($cinema)) {
+            // set the owning side to null (unless already changed)
+            if ($cinema->getUser() === $this) {
+                $cinema->setUser(null);
             }
         }
 

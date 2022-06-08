@@ -9,6 +9,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use App\Service\FileUploader;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 
 /**
@@ -26,13 +27,19 @@ class CinemaController extends AbstractController
     }
 
     #[Route('/new', name: 'app_cinema_new', methods: ['GET', 'POST'])]
-    public function new(Request $request, CinemaRepository $cinemaRepository): Response
+    public function new(Request $request, CinemaRepository $cinemaRepository, FileUploader $fileUploader): Response
     {
         $cinema = new Cinema();
         $form = $this->createForm(CinemaType::class, $cinema);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            $imageFile = $form->get('image')->getData();
+        if ($imageFile) {
+            $imageFileName = $fileUploader->upload($imageFile);
+            $cinema->setImage($imageFileName);
+        }
+        $cinema->setUser($this->getUser());
             $cinemaRepository->add($cinema, true);
 
             return $this->redirectToRoute('app_cinema_index', [], Response::HTTP_SEE_OTHER);

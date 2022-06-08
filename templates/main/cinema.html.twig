@@ -1,0 +1,58 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Les Cinema{% endblock %}
+
+{% block body %}
+
+                    <!-- breadcrumb-area -->
+            <section class="breadcrumb-area breadcrumb-bg" data-background="img/bg/breadcrumb_bg.jpg">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="breadcrumb-content">
+                                <h2 class="title">Les <span>Cinema</span></h2>
+                                <nav aria-label="breadcrumb">
+                                    <ol class="breadcrumb">
+                                        <li class="breadcrumb-item"><a href="{{ path('app_main')}}">Accueil</a></li>
+                                        <li class="breadcrumb-item active" aria-current="page">Cinema</li>
+                                    </ol>
+                                </nav>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <!-- breadcrumb-area-end -->
+
+            <!-- movie-area -->
+            <section class="movie-area movie-bg" data-background="img/bg/movie_bg.jpg">
+                <div class="container">
+                    
+                    <div class="row tr-movie-active">
+                    {% for cinema in cinemas %}
+                        
+                    
+                        <div class="col-xl-3 col-lg-4 col-sm-6 grid-item grid-sizer cat-two">
+                            <div class="movie-item movie-item-three mb-50">
+                                <div class="movie-poster">
+                                    <img src="{{ asset('uploads/images/' ~ cinema.image )}}" alt="">
+                                    <ul class="overlay-btn">
+                                        <li><a href="movie-details.html" class="btn btn-warning"> Videos en projection</a></li>
+                                    </ul>
+                                </div>
+                                <div class="movie-content">
+                                    <div class="top">
+                                        <h2 class="title"><a href="movie-details.html" style="color:black">{{ cinema.nom }}</a></h2>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        {% endfor %}
+                    
+                    </div>
+                </div>
+            </section>
+            <!-- movie-area-end -->
+
+            
+{% endblock %}

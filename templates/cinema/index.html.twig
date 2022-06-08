@@ -19,6 +19,7 @@
                         <tr>
                             <th>Nom</th>
                             <th>Localisation</th>
+                            <th>Site web</th>
                             <th>actions</th>
                         </tr>
                     </thead>
@@ -27,6 +28,7 @@
                         <tr>
                             <td>{{ cinema.nom }}</td>
                             <td>{{ cinema.localisation }}</td>
+                            <td>{{ cinema.siteWeb }}</td>
                             <td>
                                 <a href="{{ path('app_cinema_show', {'id': cinema.id}) }}">Voir</a>
                                 <a href="{{ path('app_cinema_edit', {'id': cinema.id}) }}">Modifier</a>

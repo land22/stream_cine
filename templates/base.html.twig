@@ -69,10 +69,8 @@
                                         
                                             </li>
             
-                                            <li class="menu-item-has-children"><a href="#">blog</a>
-                                                <ul class="submenu">
-                                                    <li><a href="blog-details.html">Blog Details</a></li>
-                                                </ul>
+                                            <li class="menu-item-has-children"><a href="{{ path('app_main_cinema')}}">Les cinemas</a>
+                                                
                                             </li>
                                             <li><a href="contact.html">contacts</a></li>
                                         </ul>
@@ -160,6 +158,7 @@
                                         <ul class="navigation">
                                             <li><a href="{{path('app_main')}}">Accueil</a></li>
                                             <li><a href="{{path('app_main_video')}}">Film/Serie</a></li>
+                                              <li><a href="{{path('app_main_cinema')}}">Les cinemas</a></li>
                                             {% if app.user %}
                                             <li><a href="{{path('app_logout')}}">Déconnexion</a></li>
                                             {% else %}

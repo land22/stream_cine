@@ -5,6 +5,7 @@ namespace App\Entity;
 use App\Repository\CinemaRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use App\Entity\Video;
+use App\Entity\User;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
@@ -27,6 +28,15 @@ class Cinema
 
     #[ORM\OneToMany(mappedBy: 'cinema', targetEntity: Projection::class)]
     private $projections;
+
+    #[ORM\Column(type: 'string', length: 255, nullable: true)]
+    private $image;
+
+    #[ORM\Column(type: 'string', length: 255)]
+    private $siteWeb;
+
+    #[ORM\ManyToOne(targetEntity: user::class, inversedBy: 'cinemas')]
+    private $user;
 
     public function __construct()
     {
@@ -113,6 +123,42 @@ class Cinema
                 $projection->setCinema(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getImage(): ?string
+    {
+        return $this->image;
+    }
+
+    public function setImage(?string $image): self
+    {
+        $this->image = $image;
+
+        return $this;
+    }
+
+    public function getSiteWeb(): ?string
+    {
+        return $this->siteWeb;
+    }
+
+    public function setSiteWeb(string $siteWeb): self
+    {
+        $this->siteWeb = $siteWeb;
+
+        return $this;
+    }
+
+    public function getUser(): ?user
+    {
+        return $this->user;
+    }
+
+    public function setUser(?user $user): self
+    {
+        $this->user = $user;
 
         return $this;
     }
