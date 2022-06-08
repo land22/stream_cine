@@ -1,0 +1,75 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Détail de la video{% endblock %}
+
+{% block body %}
+
+             <section class="movie-details-area" style="background-color:#921D29;">
+                <div class="container">
+                    <div class="row align-items-center position-relative">
+                        <div class="col-xl-3 col-lg-4">
+                            <div class="movie-details-img">
+                                <img src="{{ asset('uploads/images/' ~ video.image )}}" width="300" height="450" alt="">
+                                <a href="{{ video.url }}" class="popup-video"><img src="{{ asset('assets/frontend/img/images/play_icon.png')}}" alt=""></a>
+                            </div>
+                        </div>
+                        <div class="col-xl-9 col-lg-8">
+                            <div class="movie-details-content">
+                                <h2>{{ video.titre }} </h2>
+                                <div class="banner-meta">
+                                    <ul>
+                                        <li class="quality">
+                                            <span>hd</span>
+                                        </li>
+                                        <li class="category">
+                                            <a href="#">{{ video.categorie.nom }},</a>
+                                        </li>
+                                        <li class="release-time">
+                                            <span><i class="far fa-calendar-alt"></i> {{ video.createdAt|date("Y") }}</span>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <p>{{ video.description }}</p>
+                                <div class="movie-details-prime">
+                                    <ul>
+                                        <li class="watch"><a href="{{ video.url }}" class="btn popup-video"><i class="fas fa-play"></i> Régarder la vidéo</a></li>
+                                    </ul>
+                                    <ul>
+                                        <li class="streaming">
+                                            <h3>Liste des commentaires</h3>
+                                            {% for commentaire in video.commentaires %}
+                                                <span>{{ commentaire.contenu }}</span>
+                                            {% endfor %}
+                                            
+                                        </li>
+                                       </ul> 
+                                       
+                                       
+                                       <ul>
+                                       {% if app.user %}
+                                        <li class="streaming">
+                                            <h6>Laisser un commentaire</h6> 
+                                             {{ form_start(form) }}
+                                                <div class="form-group">
+                                                    {{ form_label(form.contenu, 'Contenu', {'label_attr': {'class': 'foo'}}) }}
+                                                    {{ form_widget(form.contenu, {'attr': {'class': 'form-control'}}) }}
+                                                </div>
+                                                <button class="btn">{{ button_label|default('Enregistrer') }}</button>
+                                            {{ form_end(form) }}                                                                               
+                                        </li>
+                                        {% else %}
+                                        <li class="streaming">
+                                            <h6>Pour laisser un commentaire veuillez vous connectez</h6>                                                                                
+                                        </li>
+                                        {% endif %}
+                                       </ul> 
+                                      
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+
+{% endblock %}

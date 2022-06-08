@@ -38,28 +38,20 @@
                                     <img src="{{ asset('uploads/images/' ~ video.image )}}" alt="">
                                     <ul class="overlay-btn">
                                         <li class="rating">
-                                            <i class="fas fa-star"></i>
-                                            <i class="fas fa-star"></i>
-                                            <i class="fas fa-star"></i>
-                                            <i class="fas fa-star"></i>
-                                            <i class="fas fa-star"></i>
+                                            {{ video.commentaires|length }} commentaires
                                         </li>
                                         <li><a href="{{ video.url }}" class="popup-video btn">Regarder la video</a></li>
-                                        <li><a href="movie-details.html" class="btn">Details</a></li>
+                                        <li><a href="{{ path('app_main_video_details', {'id': video.id})}}" class="btn">Details</a></li>
                                     </ul>
                                 </div>
                                 <div class="movie-content">
                                     <div class="top">
-                                        <h2 class="title"><a href="movie-details.html" style="color:black">{{ video.titre }}</a></h2>
+                                        <h2 class="title"><a href="{{ path('app_main_video_details', {'id': video.id})}}" style="color:black">{{ video.titre }}</a></h2>
                                         <span class="date">{{ video.createdAt|date("Y") }}</span>
                                     </div>
                                     <div class="bottom">
                                         <ul>
                                             <li><span class="quality">HD</span></li>
-                                            <li>
-    
-                                                <span class="rating"><i class="fas fa-thumbs-up"></i> 3.5</span>
-                                            </li>
                                         </ul>
                                     </div>
                                 </div>
