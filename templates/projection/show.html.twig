@@ -1,26 +1,39 @@
-{% extends 'base.html.twig' %}
+{% extends 'baseAdmin.html.twig' %}
 
 {% block title %}Projection{% endblock %}
 
 {% block body %}
-    <h1>Projection</h1>
+    <div class="content-header sty-one">
+      <h1>Projections</h1>
+      <ol class="breadcrumb">
+        <li><a href="{{ path('app_projection_index') }}" class="btn btn-warning">Retour à la liste</a></li>
+      </ol>
+    </div>
+      <div class="content">
+         <div class="info-box">
+         <div class="table-responsive">
 
     <table class="table">
         <tbody>
             <tr>
-                <th>Id</th>
-                <td>{{ projection.id }}</td>
+                <th>Cinema</th>
+                <td>{{ projection.cinema.nom }}</td>
             </tr>
             <tr>
-                <th>HeureProjection</th>
+                <th>Film</th>
+                <td>{{ projection.video.titre }}</td>
+            </tr>
+            <tr>
+                <th>Créneaux horaires</th>
                 <td>{{ projection.heureProjection ? projection.heureProjection|date('Y-m-d H:i:s') : '' }}</td>
             </tr>
         </tbody>
     </table>
 
-    <a href="{{ path('app_projection_index') }}">back to list</a>
-
-    <a href="{{ path('app_projection_edit', {'id': projection.id}) }}">edit</a>
+    <a href="{{ path('app_projection_edit', {'id': projection.id}) }}" class="btn btn-warning">Modifier</a>
 
     {{ include('projection/_delete_form.html.twig') }}
+    </div>
+    </div>
+    </div>
 {% endblock %}

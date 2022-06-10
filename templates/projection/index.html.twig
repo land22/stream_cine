@@ -17,14 +17,17 @@
     <table class="table">
         <thead>
             <tr>
-                <th>HeureProjection</th>
+                <th>Cinema</th>
+                <th>film</th>
+                <th>Creneaux horaires </th>
                 <th>actions</th>
             </tr>
         </thead>
         <tbody>
         {% for projection in projections %}
             <tr>
-                <td>{{ projection.id }}</td>
+                <td>{{ projection.cinema.nom }}</td>
+                <td>{{ projection.video.titre }}</td>
                 <td>{{ projection.heureProjection ? projection.heureProjection|date('Y-m-d H:i:s') : '' }}</td>
                 <td>
                     <a href="{{ path('app_projection_show', {'id': projection.id}) }}">voir</a>

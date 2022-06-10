@@ -11,5 +11,5 @@
         {{ form_label(form.cinema, 'Le film doit être projecter dans quel cinéma ?', {'label_attr': {'class': 'foo'}}) }}
         {{ form_widget(form.cinema, {'attr': {'class': 'form-control'}}) }}
     </div>
-    <button class="btn">{{ button_label|default('Enregistrer') }}</button>
+    <button class="btn btn-warning">{{ button_label|default('Enregistrer') }}</button>
 {{ form_end(form) }}

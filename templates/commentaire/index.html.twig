@@ -14,7 +14,6 @@
         <thead>
             <tr>
                 <th>Contenu</th>
-                <th>Etat</th>
                 <th>actions</th>
             </tr>
         </thead>
@@ -22,7 +21,6 @@
         {% for commentaire in commentaires %}
             <tr>
                 <td>{{ commentaire.contenu }}</td>
-                <td>{{ commentaire.etat}}</td>
                 <td>
                     <a href="{{ path('app_commentaire_show', {'id': commentaire.id}) }}">Voir</a>
                     <a href="{{ path('app_commentaire_edit', {'id': commentaire.id}) }}">Modifier</a>

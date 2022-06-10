@@ -1,0 +1,88 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Les videos en projection{% endblock %}
+
+{% block body %}
+
+                    <!-- breadcrumb-area -->
+            <section class="breadcrumb-area breadcrumb-bg" data-background="img/bg/breadcrumb_bg.jpg">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="breadcrumb-content">
+                                <h2 class="title">Les videos au cinema <span>{{ projections[0].cinema.nom }}</span></h2>
+                                <nav aria-label="breadcrumb">
+                                    <ol class="breadcrumb">
+                                        <li class="breadcrumb-item"><a href="{{ path('app_main')}}">Accueil</a></li>
+                                        <li class="breadcrumb-item active" aria-current="page">Videos</li>
+                                    </ol>
+                                </nav>
+                                    {% for message in app.flashes('noticeReservation') %}
+                                    <div class="alert alert-success">
+                                        {{ message }}
+                                    </div>
+                                {% endfor %}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <!-- breadcrumb-area-end -->
+
+            <!-- movie-area -->
+            <section class="movie-area movie-bg" data-background="img/bg/movie_bg.jpg">
+                <div class="container">
+                    
+                    <div class="row tr-movie-active">
+                        
+                    {% for projection in projections %}
+                        
+                    
+                        <div class="col-xl-3 col-lg-4 col-sm-6 grid-item grid-sizer cat-two">
+                            <div class="movie-item movie-item-three mb-50">
+                                <div class="movie-poster">
+                                    <img src="{{ asset('uploads/images/' ~ projection.video.image )}}" alt="">
+                                    <ul class="overlay-btn">
+                                        <li class="rating">
+                                            {{ projection.video.commentaires|length }} commentaires
+                                        </li>
+                                        {% if app.user %}
+                                        <li><a href="{{ path('app_main_video_details', {'id': projection.video.id})}}" class="btn">Reserver</a></li>
+                                        {% endif %}
+                                    </ul>
+                                </div>
+                                <div class="movie-content">
+                                    <div class="top">
+                                        <h2 class="title"><a href="{{ path('app_main_video_details', {'id': projection.video.id})}}" style="color:black">{{ projection.video.titre }}</a></h2>
+                                        <span class="date">{{ projection.video.createdAt|date("Y") }}</span>
+                                    </div>
+                                    <div class="bottom">
+                                        <ul>
+                                        {% if app.user %}
+                                        <li>
+                                           {{ form_start(form) }}
+                                            {{ form_widget(form) }}
+                                            <button class="btn btn-warning">{{ button_label|default('Reserver le film') }}</button>
+                                           {{ form_end(form) }}
+                                        
+                                        </li>
+                                        {% else %} 
+                                        <li><span >Connecter vous pour faire une reservation</span></li>
+                                        {% endif %}
+                                        
+                                            
+                                            
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        {% endfor %}
+                    
+                    </div>
+                </div>
+            </section>
+            <!-- movie-area-end -->
+
+            
+{% endblock %}

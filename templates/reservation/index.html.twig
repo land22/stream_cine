@@ -10,33 +10,36 @@
       <div class="content">
          <div class="info-box">
          <div class="table-responsive">
-    <table class="table">
-
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>Etat</th>
-                <th>actions</th>
-            </tr>
-        </thead>
-        <tbody>
-        {% for reservation in reservations %}
-            <tr>
-                <td>{{ reservation.id }}</td>
-                <td>{{ reservation.etat }}</td>
-                <td>
-                    <a href="{{ path('app_reservation_show', {'id': reservation.id}) }}">Voir</a>
-                    <a href="{{ path('app_reservation_edit', {'id': reservation.id}) }}">Modifier</a>
-                </td>
-            </tr>
-        {% else %}
-            <tr>
-                <td colspan="3">Pas de reservations enregistrées pour le moment !!!</td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
+    
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Titulaire</th>
+                    <th>Film</th>
+                    <th>Cinema</th>
+                    <th>Etat</th>
+                    <th>actions</th>
+                </tr>
+            </thead>
+            <tbody>
+            {% for reservation in reservations %}
+                <tr>
+                    <td>{{ reservation.user.nom}}</td>
+                    <td>{{ reservation.projection.video.titre}}</td>
+                    <td>{{ reservation.projection.cinema.nom}}</td>
+                    <td>{{ reservation.etat }}</td>
+                    <td>
+                        <a href="{{ path('app_reservation_show', {'id': reservation.id}) }}" class="btn btn-warning">Voir</a>
+                        <a href="{{ path('app_reservation_edit', {'id': reservation.id}) }}" class="btn btn-warning">Modifier</a>
+                    </td>
+                </tr>
+            {% else %}
+                <tr>
+                    <td colspan="3">Pas de reservations enregistrées pour le moment !!!</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+      </table>
     </div>
     </div>
     </div>

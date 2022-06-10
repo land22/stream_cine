@@ -37,13 +37,16 @@
                                 <div class="movie-poster">
                                     <img src="{{ asset('uploads/images/' ~ cinema.image )}}" alt="">
                                     <ul class="overlay-btn">
-                                        <li><a href="movie-details.html" class="btn btn-warning"> Videos en projection</a></li>
+                                        <li><a href="{{ path('app_main_cinema_details',{'id':cinema.id})}}" class="btn btn-warning">{{ cinema.projections | length }} Videos en projection</a>
+                                        </li>
                                     </ul>
                                 </div>
                                 <div class="movie-content">
                                     <div class="top">
-                                        <h2 class="title"><a href="movie-details.html" style="color:black">{{ cinema.nom }}</a></h2>
+                                        <h2 class="title"><a href="{{ path('app_main_cinema_details',{'id':cinema.id})}}" style="color:black">{{ cinema.nom }}</a></h2>
+                                        
                                     </div>
+                                    <a href="{{ path('app_main_cinema_details',{'id':cinema.id})}}" class="btn">{{ cinema.projections | length }} Video en cour</a>
                                 </div>
                             </div>
                         </div>
