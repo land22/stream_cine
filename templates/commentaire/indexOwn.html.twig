@@ -1,0 +1,40 @@
+{% extends 'baseAdmin.html.twig' %}
+
+{% block title %}Commentaires{% endblock %}
+
+{% block body %}
+    
+<div class="content-header sty-one">
+      <h1>Listes des commentaires</h1>
+    </div>
+      <div class="content">
+         <div class="info-box">
+         <div class="table-responsive">
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Contenu</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for commentaire in commentaires %}
+            <tr>
+                <td>{{ commentaire.contenu }}</td>
+                <td>
+                    <a href="{{ path('app_commentaire_show', {'id': commentaire.id}) }}" class="btn btn-warning">Voir</a>
+                    <a href="{{ path('app_commentaire_edit', {'id': commentaire.id}) }}" class="btn btn-warning">Modifier</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="4">Pas de commentaires enregistrés !!!</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+    </div>
+    </div>
+    </div>
+
+{% endblock %}

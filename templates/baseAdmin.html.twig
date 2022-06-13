@@ -122,9 +122,11 @@
           </ul>
         </li>
         {% endif %}
-        <li class="header">Personnels</li>
-        <li class="treeview"> <a href="#"> <i class="fa fa-th"></i> <span>Mes commentaires</span> <span class="pull-right-container"> <i class="fa fa-angle-left pull-right"></i> </span> </a>
-        <li class="treeview"> <a href="#"> <i class="fa fa-th"></i> <span>Mes Reservations</span> <span class="pull-right-container"> <i class="fa fa-angle-left pull-right"></i> </span> </a>
+        <li class="header"><span>Personnels</span>
+        </li>
+        <li class="header"> <a href="{{ path('own_commentaire')}}"> <i class="fa fa-th"></i> <span>Mes commentaires</span> <span class="pull-right-container"> <i class="fa fa-angle-left pull-right"></i> </span> </a>
+        </li>
+        <li class="header"> <a href="{{ path('own_reservation')}}"> <i class="fa fa-th"></i> <span>Mes reservations</span> <span class="pull-right-container"> <i class="fa fa-angle-left pull-right"></i> </span> </a>
         </li>
     </div>
     <!-- /.sidebar --> 
