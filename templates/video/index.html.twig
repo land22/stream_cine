@@ -34,8 +34,8 @@
                             <td>{{ video.realisateur }}</td>
                             <td>{{ video.url }}</td>
                             <td>
-                                <a href="{{ path('app_video_show', {'id': video.id}) }}">Voir</a>
-                                <a href="{{ path('app_video_edit', {'id': video.id}) }}">Modifier</a>
+                                <a href="{{ path('app_video_show', {'id': video.id}) }}" class="btn btn-warning">Voir</a>
+                                <a href="{{ path('app_video_edit', {'id': video.id}) }}" class="btn btn-warning">Modifier</a>
                             </td>
                         </tr>
                     {% else %}

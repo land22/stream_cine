@@ -6,7 +6,7 @@
     <div class="content-header sty-one">
       <h1>Modifier La catégorie </h1>
       <ol class="breadcrumb">
-        <li><a href="{{ path('app_categorie_index') }}" class="btn btn-warning">Retrour à la liste</a></li>
+        <li><a href="{{ path('app_categorie_index') }}" class="btn btn-warning">Retour à la liste</a></li>
       </ol>
     </div>
       <div class="content">
@@ -20,7 +20,7 @@
                 <td>{{ categorie.nom }}</td>
             </tr>
             <tr>
-                <th>Date Création</th>
+                <th>Date de Création</th>
                 <td>{{ categorie.createdAt ? categorie.createdAt|date('Y-m-d H:i:s') : '' }}</td>
             </tr>
         </tbody>

@@ -82,4 +82,11 @@ class MainController extends AbstractController
             'form' => $form->createView()
         ]);
     }
+    #[Route('/main/contact', name: 'app_main_contact')]
+    public function contact(): Response
+    {
+        
+        return $this->render('main/contact.html.twig', [
+        ]);
+    }
 }

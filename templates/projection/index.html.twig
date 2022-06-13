@@ -30,8 +30,8 @@
                 <td>{{ projection.video.titre }}</td>
                 <td>{{ projection.heureProjection ? projection.heureProjection|date('Y-m-d H:i:s') : '' }}</td>
                 <td>
-                    <a href="{{ path('app_projection_show', {'id': projection.id}) }}">voir</a>
-                    <a href="{{ path('app_projection_edit', {'id': projection.id}) }}">modifier</a>
+                    <a href="{{ path('app_projection_show', {'id': projection.id}) }}" class="btn btn-warning">voir</a>
+                    <a href="{{ path('app_projection_edit', {'id': projection.id}) }}" class="btn btn-warning">modifier</a>
                 </td>
             </tr>
         {% else %}

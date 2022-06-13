@@ -26,8 +26,8 @@
                     <tr>
                         <td>{{ categorie.nom }}</td>
                         <td>
-                            <a href="{{ path('app_categorie_show', {'id': categorie.id}) }}">Voir</a>
-                            <a href="{{ path('app_categorie_edit', {'id': categorie.id}) }}">Modifier</a>
+                            <a href="{{ path('app_categorie_show', {'id': categorie.id}) }}" class="btn btn-warning">Voir</a>
+                            <a href="{{ path('app_categorie_edit', {'id': categorie.id}) }}" class="btn btn-warning">Modifier</a>
                         </td>
                     </tr>
                 {% else %}

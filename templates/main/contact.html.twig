@@ -1,0 +1,84 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Contact{% endblock %}
+
+{% block body %}
+
+                    <!-- breadcrumb-area -->
+            <section class="breadcrumb-area breadcrumb-bg" data-background="{{ asset('assets/frontend/img/bg/breadcrumb_bg.jpg') }}">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="breadcrumb-content">
+                                <h2 class="title"> <span>Contact</span></h2>
+                                <nav aria-label="breadcrumb">
+                                    <ol class="breadcrumb">
+                                        <li class="breadcrumb-item"><a href="{{ path('app_main')}}">Accueil</a></li>
+                                        <li class="breadcrumb-item active" aria-current="page">Contact</li>
+                                    </ol>
+                                </nav>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <!-- breadcrumb-area-end -->
+
+            <!-- movie-area -->
+            <section class="movie-area movie-bg" data-background="{{ asset('assets/frontend/img/bg/contact_bg.jpg')}}">
+             <div class="container">
+                    <div class="row">
+                        <div class="col-xl-8 col-lg-7">
+                            <div class="contact-form-wrap">
+                                <div class="widget-title mb-50">
+                                    <h5 class="title">Formulaire de contact</h5>
+                                </div>
+                                <div class="contact-form">
+                                    <form action="#">
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <input type="text" placeholder="Votre nom *">
+                                            </div>
+                                            <div class="col-md-6">
+                                                <input type="email" placeholder="Votre email *">
+                                            </div>
+                                        </div>
+                                        <input type="text" placeholder="Sujet de votre message *">
+                                        <textarea name="message" placeholder="Votre message..."></textarea>
+                                        <button class="btn">Envoyer</button>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xl-4 col-lg-5">
+                            <div class="widget-title mb-50">
+                                <h5 class="title">Information</h5>
+                            </div>
+                            <div class="contact-info-wrap">
+                                <p><span>Pour tous problèmes concernant notre plateforme :</span> Nous restons à votre disposition. Fait nous un mail et nous vous repondons dans les plus bref delais !!!</p>
+                                <div class="contact-info-list">
+                                    <ul>
+                                        <li>
+                                            <div class="icon"><i class="fas fa-map-marker-alt"></i></div>
+                                            <p><span>Address :</span> France paris</p>
+                                        </li>
+                                        <li>
+                                            <div class="icon"><i class="fas fa-phone-alt"></i></div>
+                                            <p><span>Télephone :</span> (33) 123 854 365</p>
+                                        </li>
+                                        <li>
+                                            <div class="icon"><i class="fas fa-envelope"></i></div>
+                                            <p><span>Email :</span> support@movflx.com</p>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+            </section>
+            <!-- movie-area-end -->
+
+            
+{% endblock %}
