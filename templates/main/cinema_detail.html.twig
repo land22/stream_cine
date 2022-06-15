@@ -60,11 +60,10 @@
                                         <ul>
                                         {% if app.user %}
                                         <li>
-                                           {{ form_start(form) }}
-                                            {{ form_widget(form) }}
-                                            <button class="btn btn-warning">{{ button_label|default('Reserver le film') }}</button>
-                                           {{ form_end(form) }}
-                                        
+                    
+                                            <a href="{{ path('app_main_reservation', {'id': projection.video.id})}}" class="btn btn-warning">{{ button_label|default('Reserver le film') }}</a>
+                                           
+    
                                         </li>
                                         {% else %} 
                                         <li><span >Connecter vous pour faire une reservation</span></li>

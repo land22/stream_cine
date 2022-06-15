@@ -60,26 +60,28 @@ class MainController extends AbstractController
             'form' => $form->createView()
         ]);
     }
-    #[Route('/main/cinema/details/{id}', name: 'app_main_cinema_details', methods: ['GET', 'POST'])]
-    public function cinemaDetail(Request $request, ProjectionRepository $projectionRepository, ReservationRepository $reservationRepository, int $id): Response
+    
+    #[Route('/main/reservation/{id}', name: 'app_main_reservation', methods: ['GET', 'POST'])]
+    public function cinemaReservation(ProjectionRepository $projectionRepository, ReservationRepository $reservationRepository, int $id): Response
     {
-        $projection = $projectionRepository->findBy(['cinema' => $id]);
+        $projection = $projectionRepository->findOneBy(['video' => $id]);
         $reservation = new Reservation();
-        $form = $this->createForm(ReservationType::class, $reservation);
-        $form->handleRequest($request);
-
-        if ($form->isSubmitted() && $form->isValid()) {
             $reservation->setEtat('En cour');
             $reservation->setUser($this->getUser());
-            $reservation->setProjection($projection[0]);
+            $reservation->setProjection($projection);
             $reservationRepository->add($reservation, true);
             $this->addFlash('noticeReservation', 'Votre reservation à été pris en compte !!!');
-            return $this->redirectToRoute('app_main_cinema_details', ['id'=>$projection[0]->getCinema()->getId()], Response::HTTP_SEE_OTHER);
+            return $this->redirectToRoute('app_main_cinema_details', ['id'=>$projection->getCinema()->getId()], Response::HTTP_SEE_OTHER);
             
-        }
+    }
+
+    #[Route('/main/cinema/details/{id}', name: 'app_main_cinema_details', methods: ['GET', 'POST'])]
+    public function cinemaDetail(ProjectionRepository $projectionRepository, int $id): Response
+    {
+        $projection = $projectionRepository->findBy(['cinema' => $id]);
+
         return $this->render('main/cinema_detail.html.twig', [
             'projections' => $projection,
-            'form' => $form->createView()
         ]);
     }
     #[Route('/main/contact', name: 'app_main_contact')]
