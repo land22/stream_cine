@@ -19,16 +19,7 @@ class CinemaType extends AbstractType
             ->add('image',FileType::class,[
                 'label' => 'Image du cinema',
                 'mapped' => false,
-                'required' => false,
-                'constraints' => [
-                    new File([
-                        'maxSize' => '1024k',
-                        'mimeTypes' => [
-                            'image/*'
-                        ],
-                        'mimeTypesMessage' => 'Veuillez soumettre un fichier valide',
-                    ])
-                ],
+                'required' => false
             ])
             ->add('siteWeb')
         ;

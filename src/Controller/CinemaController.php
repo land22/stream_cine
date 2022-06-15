@@ -60,12 +60,17 @@ class CinemaController extends AbstractController
     }
 
     #[Route('/{id}/edit', name: 'app_cinema_edit', methods: ['GET', 'POST'])]
-    public function edit(Request $request, Cinema $cinema, CinemaRepository $cinemaRepository): Response
+    public function edit(Request $request, Cinema $cinema, CinemaRepository $cinemaRepository, FileUploader $fileUploader): Response
     {
         $form = $this->createForm(CinemaType::class, $cinema);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            $imageFile = $form->get('image')->getData();
+            if ($imageFile) {
+                $imageFileName = $fileUploader->upload($imageFile);
+                $cinema->setImage($imageFileName);
+            }
             $cinemaRepository->add($cinema, true);
 
             return $this->redirectToRoute('app_cinema_index', [], Response::HTTP_SEE_OTHER);
